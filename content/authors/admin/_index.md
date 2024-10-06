@@ -57,7 +57,7 @@ education:
     #   text: 'Read Thesis'
     #   url: 'https://example.com'
 
-  - area: Computer Science and Engineering
+  - area: B.S. in Computer Science and Engineering
     institution: The Ohio State University
     date_start: 2016-01-01
     date_end: 2020-12-31
@@ -66,7 +66,7 @@ education:
       Honor Engineering program
       Honor Thesis: Characterizing Service Level Objectives
       Cum Laude Honor
-  - area: Finance
+  - area: B.S. in Finance
     institution: The Ohio State University
     date_start: 2016-01-01
     date_end: 2020-12-31
