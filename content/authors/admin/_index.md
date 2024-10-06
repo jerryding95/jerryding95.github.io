@@ -172,7 +172,7 @@ education:
 
 ## About Me
 
-Fifth-year PhD at the University of Chicago advised by Prof. Hank Hoffmann. Received two B.S. in Computer Science and Engineering and Finance from The Ohio State University and fortunate to work with Dr. Christopher Steward.
+Fifth-year PhD at the University of Chicago advised by [Prof. Hank Hoffmann](http://people.cs.uchicago.edu/~hankhoffmann/). Received two B.S. in Computer Science and Engineering and Finance from The Ohio State University and fortunate to work with [Dr. Christopher Steward](https://cse.osu.edu/people/stewart.962).
 
 
 **Research Interest**: My research interest lies in the joint of HPC, Computer Architecture and Operating Systems, and Machine Learning. My work focuses on control systems that adapt computing resource management to large-scale workload fluctuations to meet high-level user-defined goals.
