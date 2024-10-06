@@ -43,11 +43,11 @@ sections:
         My interest and work falls into the intelligent and adaptive data movement and assignment to solve large-scale load-balancing problems. (ongoing work)
 
 
-        **Distributed power management**
+        **Distributed power management** (SC' 23)
 
         The increase in modern cluster scale following Moore’s law is leaving power support behind. Fully powering an exascale cluster is neither realistic nor safe. Thus overprovisioned systems, clusters under a power cap, are proposed for exascale clusters to operate functionally. We explored distributed power management for such large-scale clusters.
 
-        **Cache allocation performance modeling**
+        **Cache allocation performance modeling** (ICAC' 19)
 
         Recent CPU architecture allows for customized cache allocation strategies. This opens new opportunities for computational sprinting to meet high-level user-defined goals.
     design:
