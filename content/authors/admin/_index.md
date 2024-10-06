@@ -42,9 +42,9 @@ profiles:
 
 
 interests:
-  - Machine Learning
   - High Performance Computation
   - Computer Systems
+  - Machine Learning
   - Computer Architecure
 
 education:
@@ -72,29 +72,29 @@ education:
     date_end: 2020-12-31
     summary: Cum Laude Honor
 
-work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
-    company_logo: ''
-    date_start: 2021-01-01
-    date_end: ''
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+# work:
+#   - position: Director of Cloud Infrastructure
+#     company_name: GenCoin
+#     company_url: ''
+#     company_logo: ''
+#     date_start: 2021-01-01
+#     date_end: ''
+#     summary: |2-
+#       Responsibilities include:
+#       - lorem ipsum dolor sit amet, consectetur adipiscing elit
+#       - lorem ipsum dolor sit amet, consectetur adipiscing elit
+#       - lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - position: Backend Software Engineer
+#     company_name: X
+#     company_url: ''
+#     company_logo: ''
+#     date_start: 2016-01-01
+#     date_end: 2020-12-31
+#     summary: |
+#       Responsibilities include:
+#       - Migrated infrastructure to a new data center
+#       - lorem ipsum dolor sit amet, consectetur adipiscing elit
+#       - lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 # # Skills
 # # Add your own SVG icons to `assets/media/icons/`
@@ -174,4 +174,5 @@ work:
 
 Fifth-year PhD at the University of Chicago advised by Prof. Hank Hoffmann. Received two B.S. in Computer Science and Engineering and Finance from The Ohio State University and fortunate to work with Dr. Christopher Steward.
 
-Research Interest: My research interest lies in the joint of HPC, Computer Architecture and Operating Systems, and Machine Learning. My work focuses on control systems that adapt computing resource management to large-scale workload fluctuations to meet high-level user-defined goals.
+
+**Research Interest**: My research interest lies in the joint of HPC, Computer Architecture and Operating Systems, and Machine Learning. My work focuses on control systems that adapt computing resource management to large-scale workload fluctuations to meet high-level user-defined goals.
