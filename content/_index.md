@@ -36,7 +36,7 @@ sections:
       title: '📚 Research Projects'
       subtitle: ''
       text: |-
-        **The [UpDown](https://cs.uchicago.edu/news/new-updown-project-uses-intelligent-data-movement-to-accelerate-graph-analytics/) system project**
+        The [UpDown](https://cs.uchicago.edu/news/new-updown-project-uses-intelligent-data-movement-to-accelerate-graph-analytics/) system project
 
         The Updown system is a large-scale distributed computing system that enables flexible graph representation and programmable intelligence to move it within the system. We build and explore efficient and scalable computation over massive graph structures in this system.
 
