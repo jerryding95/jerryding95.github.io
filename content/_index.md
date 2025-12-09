@@ -36,11 +36,20 @@ sections:
       title: '📚 Research Projects'
       subtitle: ''
       text: |-
+
+        **LLM-agent serving on heterogeneous GPUs**
+    
+        The agentic workloads demonstrate different characteristics from LLM inferencing. We are exploring agent-serving frameworks with better cost-performance tradeoffs on heterogeneous GPUs.
+
+        **Software-Defined Cooling**
+
+        During an internship at Azure Research - Systems, we proposed software-defined hybrid cooling in next-generation AI datacenters, studied possible use cases thoroughly, and achieved comparable PUE with current industry practice while minimizing water usage. (in-submission work)
+
         **The <a href="https://cs.uchicago.edu/news/new-updown-project-uses-intelligent-data-movement-to-accelerate-graph-analytics/">UpDown</a> system project**
 
         The Updown system is a large-scale distributed computing system that enables flexible graph representation and programmable intelligence to move it within the system. We build and explore efficient and scalable computation over massive graph structures in this system.
 
-        My interest and work falls into the intelligent and adaptive data movement and assignment to solve large-scale load-balancing problems. (ongoing work)
+        My interest and work falls into the intelligent and adaptive data movement and assignment to solve large-scale load-balancing problems. (in-submission work)
 
 
         **Distributed power management** (SC' 23)
