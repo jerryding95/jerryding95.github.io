@@ -175,4 +175,4 @@ education:
 Fifth-year PhD at the University of Chicago advised by [Prof. Hank Hoffmann](http://people.cs.uchicago.edu/~hankhoffmann/). Received two B.S. in Computer Science and Engineering and Finance from The Ohio State University and fortunate to work with [Prof. Christopher Stewart](https://cse.osu.edu/people/stewart.962).
 
 
-**Research Interest**: My research interest lies in the joint of HPC, Computer Architecture and Operating Systems, and Machine Learning. My work focuses on control systems that adapt computing resource management to large-scale workload fluctuations to meet high-level user-defined goals.
+**Research Interest**: My research interests lie in the intersection of Computer Architecture and Operating Systems, Machine Learning, and HPC. My work focuses on adapting architectural design and computing resources to large-scale workload fluctuations to accelerate the execution of different workload types. Most recently, my work has focused on adapting LLM-serving frameworks and agentic workloads to hardware resources to provide more computing power in a user-friendly way.
