@@ -207,29 +207,67 @@
       };
 
       function showTerminalContent(key) {
-        var lines = contentMap[key] || [''];
         terminal.innerHTML = '';
         terminal.hidden = false;
-        // typewriter effect
-        var lineIndex = 0;
-        function typeLine(line, pos, done) {
-          if (pos < line.length) {
-            terminal.innerHTML += line.charAt(pos);
-            setTimeout(() => typeLine(line, pos + 1, done), 10);
-          } else {
-            terminal.innerHTML += '\n';
-            done();
+        
+        function typeLines(lines) {
+          var lineIndex = 0;
+          function typeLine(line, pos, done) {
+            if (pos < line.length) {
+              terminal.innerHTML += line.charAt(pos);
+              setTimeout(() => typeLine(line, pos + 1, done), 10);
+            } else {
+              terminal.innerHTML += '\n';
+              done();
+            }
           }
-        }
-        function typeNext() {
-          if (lineIndex < lines.length) {
-            typeLine(lines[lineIndex], 0, () => {
-              lineIndex++;
-              typeNext();
-            });
+          function typeNext() {
+            if (lineIndex < lines.length) {
+              typeLine(lines[lineIndex], 0, () => {
+                lineIndex++;
+                typeNext();
+              });
+            }
           }
+          typeNext();
         }
-        typeNext();
+        
+        if (key === 'publications') {
+          fetch('publications.bib')
+            .then(r => r.text())
+            .then(text => {
+              var entries = [];
+              var blocks = text.split(/@/).slice(1);
+              blocks.forEach(b => {
+                var body = b.substring(b.indexOf('{') + 1);
+                var fields = {};
+                body.split(/,(?=[^\}]*\{)/).forEach(line => {
+                  var kv = line.split(/\s*=\s*/);
+                  if (kv.length >= 2) {
+                    var k = kv[0].trim().toLowerCase();
+                    var v = kv.slice(1).join('=');
+                    v = v.replace(/^[\{\"]+|[\}\"]+$/g, '').trim();
+                    fields[k] = v;
+                  }
+                });
+                entries.push(fields);
+              });
+              var lines = ['> open publications', ''];
+              entries.forEach(f => {
+                var line = '';
+                if (f.author) line += f.author.replace(/ and /g, ', ') + ', ';
+                if (f.title) line += '"' + f.title + '"';
+                if (f.year) line += ', ' + f.year;
+                lines.push(line);
+              });
+              typeLines(lines);
+            })
+            .catch(() => typeLines(['Error loading publications']));
+          return;
+        }
+        
+        var lines = contentMap[key] || [''];
+        typeLines(lines);
       }
 
       navLinks.forEach(a => {
