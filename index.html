@@ -248,8 +248,12 @@
               return r.text();
             })
             .then(text => {
+              console.log('bib text length', text.length);
+              console.log('bib text preview', text.slice(0,200));
               var parsed = bibtexParse.toJSON(text);
+              console.log('parsed entries', parsed.length, parsed);
               var lines = ['> open publications', ''];
+              if (parsed.length === 0) lines.push('[no entries found]');
               parsed.forEach(e => {
                 var f = e.entryTags || {};
                 var authors = f.author ? f.author.replace(/ and /g, ', ') : '';
