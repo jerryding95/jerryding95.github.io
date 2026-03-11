@@ -148,9 +148,12 @@
       <h1>Jianru (Jerry) Ding</h1>
       <p class="tag">Systems &amp; distributed computing researcher</p>
       <p class="links">
-        <a href="#email" data-target="email">Email</a>
+        <a href="#about" data-target="about">About</a>
         <a href="#projects" data-target="projects">Projects</a>
         <a href="#publications" data-target="publications">Publications</a>
+        <a href="/CV.pdf" id="link-cv" target="_blank">CV↗</a>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" id="link-scholar" target="_blank">Scholar↗</a>
+        <a href="mailto:jianru@domain.edu" id="link-email">Email</a>
       </p>
     </div>
     <div class="body">
@@ -174,15 +177,11 @@
       var typingToken = 0; // increments to cancel in-flight typing
 
       var contentMap = {
-        hiring: [
-          '> open hiring',
+        about: [
+          '> about',
           '',
-          'I dislike pushing people. I am looking for:',
-          '- Highly SELF-MOTIVATED students',
-          '- Want to do something fun where I can contribute',
-          '- Open to a brief trial (~3 months) before committing',
-          '',
-          'To start, email three standout achievements and why you fit.'
+          'Hi, I’m Jianru (Jerry) Ding, a systems and distributed computing researcher.',
+          'This site is a simple interactive CV.'
         ],
         projects: [
           '> open projects',
@@ -198,14 +197,7 @@
           'Example Paper 2 (2023)',
           'Example Paper 3 (2022)',
         ],
-        email: ['Email: jianru@domain.edu'],
-        students: [
-          '> open students',
-          '',
-          'Currently supervising: none'
-        ],
-        phd: ['> open myPhD', '', 'MyPhD details go here'],
-        media: ['> open media', '', 'No media items yet']
+        email: ['Email: jianru@domain.edu']
       };
 
       function showTerminalContent(key) {
@@ -222,6 +214,20 @@
           showTerminalContent(target);
         });
       });
+
+      // open-external markers
+      function markLink(el) {
+        if (!el.dataset.marked) {
+          el.textContent += ' ✓';
+          el.dataset.marked = '1';
+        }
+      }
+      var linkCv = document.getElementById('link-cv');
+      var linkScholar = document.getElementById('link-scholar');
+      var linkEmail = document.getElementById('link-email');
+      if (linkCv) linkCv.addEventListener('click', () => markLink(linkCv));
+      if (linkScholar) linkScholar.addEventListener('click', () => markLink(linkScholar));
+      if (linkEmail) linkEmail.addEventListener('click', () => markLink(linkEmail));
 
       // optionally show default
       showTerminalContent('projects');
