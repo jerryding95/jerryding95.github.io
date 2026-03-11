@@ -207,13 +207,17 @@
         email: ['Email: jrding95@gmail.com']
       };
 
+      var typingId = 0;
       function showTerminalContent(key) {
+        typingId++;
+        var myId = typingId;
         terminal.innerHTML = '';
         terminal.hidden = false;
         
         function typeLines(lines) {
           var lineIndex = 0;
           function typeLine(line, pos, done) {
+            if (myId !== typingId) return; // cancelled
             if (pos < line.length) {
               terminal.innerHTML += line.charAt(pos);
               setTimeout(() => typeLine(line, pos + 1, done), 10);
@@ -223,6 +227,7 @@
             }
           }
           function typeNext() {
+            if (myId !== typingId) return;
             if (lineIndex < lines.length) {
               typeLine(lines[lineIndex], 0, () => {
                 lineIndex++;
@@ -234,10 +239,9 @@
         }
         
         if (key === 'publications') {
-          fetch('publications.bib')
+          fetch(window.location.origin + '/publications.bib')
             .then(r => r.text())
             .then(text => {
-              // parse with bibtex-parse-js for robust handling
               var parsed = bibtexParse.toJSON(text);
               var lines = ['> open publications', ''];
               parsed.forEach(e => {
@@ -253,7 +257,10 @@
               });
               typeLines(lines);
             })
-            .catch(() => typeLines(['Error loading publications']));
+            .catch(err => {
+              console.error('bib fetch failed', err);
+              typeLines(['Error loading publications']);
+            });
           return;
         }
         
