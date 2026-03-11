@@ -219,6 +219,16 @@
           function typeLine(line, pos, done) {
             if (myId !== typingId) return; // cancelled
             if (pos < line.length) {
+              // if an HTML tag starts here, append whole tag at once
+              if (line.charAt(pos) === '<') {
+                var end = line.indexOf('>', pos);
+                if (end !== -1) {
+                  terminal.innerHTML += line.slice(pos, end + 1);
+                  pos = end + 1;
+                  setTimeout(() => typeLine(line, pos, done), 10);
+                  return;
+                }
+              }
               terminal.innerHTML += line.charAt(pos);
               setTimeout(() => typeLine(line, pos + 1, done), 10);
             } else {
@@ -262,10 +272,14 @@
                 var authors = nf.author ? nf.author.replace(/ and /g, ', ') : '';
                 var title = nf.title ? nf.title.replace(/[{}]/g, '') : '';
                 var year = nf.year || '';
+                var venue = nf.booktitle || nf.journal || '';
+                var url = nf.url || nf.link || '';
                 var line = '- ';
                 if (authors) line += authors + ', ';
                 if (title) line += '"' + title + '"';
+                if (venue) line += ', ' + venue;
                 if (year) line += ', ' + year;
+                if (url) line += ' (' + url + ')';
                 // convert LaTeX bold to HTML <strong>
                 line = line.replace(/\\textbf\{([^}]+)\}/g, '<strong>$1</strong>');
                 lines.push(line);
