@@ -166,6 +166,7 @@
       <div id="terminal" class="terminal" aria-live="polite" hidden></div>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bibtex-parse-js/1.0.2/bibtexParse.min.js"></script>
   <script>
     (function () {
       // Image loading and tagline
@@ -236,28 +237,18 @@
           fetch('publications.bib')
             .then(r => r.text())
             .then(text => {
-              var entries = [];
-              var blocks = text.split(/@/).slice(1);
-              blocks.forEach(b => {
-                var body = b.substring(b.indexOf('{') + 1);
-                var fields = {};
-                body.split(/,(?=[^\}]*\{)/).forEach(line => {
-                  var kv = line.split(/\s*=\s*/);
-                  if (kv.length >= 2) {
-                    var k = kv[0].trim().toLowerCase();
-                    var v = kv.slice(1).join('=');
-                    v = v.replace(/^[\{\"]+|[\}\"]+$/g, '').trim();
-                    fields[k] = v;
-                  }
-                });
-                entries.push(fields);
-              });
+              // parse with bibtex-parse-js for robust handling
+              var parsed = bibtexParse.toJSON(text);
               var lines = ['> open publications', ''];
-              entries.forEach(f => {
+              parsed.forEach(e => {
+                var f = e.entryTags || {};
+                var authors = f.author ? f.author.replace(/ and /g, ', ') : '';
+                var title = f.title ? f.title.replace(/[{}]/g, '') : '';
+                var year = f.year || '';
                 var line = '';
-                if (f.author) line += f.author.replace(/ and /g, ', ') + ', ';
-                if (f.title) line += '"' + f.title + '"';
-                if (f.year) line += ', ' + f.year;
+                if (authors) line += authors + ', ';
+                if (title) line += '"' + title + '"';
+                if (year) line += ', ' + year;
                 lines.push(line);
               });
               typeLines(lines);
