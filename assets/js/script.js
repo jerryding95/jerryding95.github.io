@@ -40,5 +40,21 @@ document.addEventListener("DOMContentLoaded", function() {
         populateFromJson('data/publications.json', pubList, 'pub-item');
     }
 
+    // tab switching
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+            // update active button
+            tabButtons.forEach(b => b.classList.toggle('active', b === btn));
+            // show/hide contents
+            tabContents.forEach(c => {
+                c.classList.toggle('active', c.id === target);
+            });
+        });
+    });
+
 
 });

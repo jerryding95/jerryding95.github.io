@@ -11,18 +11,24 @@
         <header class="head">
         <img src="me.png" alt="photo of Jianru Ding" id="profile-pic" />
         <h1>Jianru (Jerry) Ding</h1>
-        <p>Computer scientist researching systems and distributed computing.</p>
+        <p class="areas">Systems • Distributed Computing • AI</p>
     </header>
 
     <div class="wrap">
-        <section id="intro">
+        <nav class="tabs">
+            <button data-target="intro" class="tab-button active">About</button>
+            <button data-target="projects" class="tab-button">Projects</button>
+            <button data-target="publications" class="tab-button">Publications</button>
+        </nav>
+
+        <section id="intro" class="tab-content active">
             <h2>About</h2>
             <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>. This site showcases my
             projects and publications, all rendered client-side for a fast,
             interactive experience.</p>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="tab-content">
             <h2>Projects</h2>
             <input id="project-search" type="text" placeholder="Search projects...">
             <ul id="project-list">
@@ -30,7 +36,7 @@
             </ul>
         </section>
 
-        <section id="publications">
+        <section id="publications" class="tab-content">
             <h2>Publications</h2>
             <input id="pub-search" type="text" placeholder="Filter publications...">
             <ul id="pub-list">

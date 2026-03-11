@@ -45,8 +45,44 @@ body {
     opacity: 1;
 }
 
+.areas {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
 section {
     margin-bottom: 60px;
+}
+
+/* tabs */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-button.active {
+    border-color: #333;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 section h2 {
