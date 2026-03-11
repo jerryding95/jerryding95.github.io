@@ -127,6 +127,10 @@
       overflow-wrap: anywhere;
       hyphens: auto;
     }
+    .terminal strong,
+    .terminal .bold {
+      font-weight: bold;
+    }
 
     .terminal a {
       color: #8ab4f8;
@@ -280,8 +284,9 @@
                 if (venue) line += ', ' + venue;
                 if (year) line += ', ' + year;
                 if (url) line += ' (' + url + ')';
-                // convert LaTeX bold to HTML <strong>
-                line = line.replace(/\\textbf\{([^}]+)\}/g, '<strong>$1</strong>');
+                if (nf.note) line += ', ' + nf.note;
+                // convert LaTeX bold to HTML bold span
+                line = line.replace(/\\textbf\{([^}]+)\}/g, '<span class="bold">$1</span>');
                 lines.push(line);
                 // add an empty line for readability
                 lines.push('');
