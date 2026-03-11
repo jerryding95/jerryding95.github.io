@@ -256,9 +256,12 @@
               if (parsed.length === 0) lines.push('[no entries found]');
               parsed.forEach(e => {
                 var f = e.entryTags || {};
-                var authors = f.author ? f.author.replace(/ and /g, ', ') : '';
-                var title = f.title ? f.title.replace(/[{}]/g, '') : '';
-                var year = f.year || '';
+                // normalize keys to lowercase for easier access
+                var nf = {};
+                Object.keys(f).forEach(k => { nf[k.toLowerCase()] = f[k]; });
+                var authors = nf.author ? nf.author.replace(/ and /g, ', ') : '';
+                var title = nf.title ? nf.title.replace(/[{}]/g, '') : '';
+                var year = nf.year || '';
                 var line = '';
                 if (authors) line += authors + ', ';
                 if (title) line += '"' + title + '"';
