@@ -215,7 +215,7 @@
         function typeLine(line, pos, done) {
           if (pos < line.length) {
             terminal.innerHTML += line.charAt(pos);
-            setTimeout(() => typeLine(line, pos + 1, done), 30);
+            setTimeout(() => typeLine(line, pos + 1, done), 10);
           } else {
             terminal.innerHTML += '\n';
             done();
