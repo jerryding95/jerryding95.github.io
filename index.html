@@ -266,6 +266,7 @@
             .catch(err => {
               console.error('bib fetch failed', err);
               typeLines(['Error loading publications']);
+              typeLines(['> ' + err.message]);
             });
           return;
         }
