@@ -262,11 +262,15 @@
                 var authors = nf.author ? nf.author.replace(/ and /g, ', ') : '';
                 var title = nf.title ? nf.title.replace(/[{}]/g, '') : '';
                 var year = nf.year || '';
-                var line = '';
+                var line = '- ';
                 if (authors) line += authors + ', ';
                 if (title) line += '"' + title + '"';
                 if (year) line += ', ' + year;
+                // convert LaTeX bold to HTML <strong>
+                line = line.replace(/\\textbf\{([^}]+)\}/g, '<strong>$1</strong>');
                 lines.push(line);
+                // add an empty line for readability
+                lines.push('');
               });
               typeLines(lines);
             })
