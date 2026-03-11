@@ -8,7 +8,7 @@
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <nav>
             <ul>
                 <li><a href="#intro">Introduction</a></li>
@@ -20,26 +20,32 @@
     
     <main>
         <section id="intro">
-            <h1>Welcome</h1>
-            <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>, a researcher in systems and distributed
-            computing. This site is a dynamically interactive presentation of my
-            projects and publications.</p>
+            <div class="container">
+                <h1>Welcome</h1>
+                <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>, a researcher in systems and distributed
+                computing. This site is a dynamically interactive presentation of my
+                projects and publications.</p>
+            </div>
         </section>
         
         <section id="projects">
-            <h2>Projects</h2>
-            <input id="project-search" type="text" placeholder="Search projects...">
-            <ul id="project-list">
-                <!-- populated by script -->
-            </ul>
+            <div class="container">
+                <h2>Projects</h2>
+                <input id="project-search" type="text" placeholder="Search projects...">
+                <ul id="project-list">
+                    <!-- populated by script -->
+                </ul>
+            </div>
         </section>
         
         <section id="publications">
-            <h2>Publications</h2>
-            <input id="pub-search" type="text" placeholder="Filter publications...">
-            <ul id="pub-list">
-                <!-- populated by script -->
-            </ul>
+            <div class="container">
+                <h2>Publications</h2>
+                <input id="pub-search" type="text" placeholder="Filter publications...">
+                <ul id="pub-list">
+                    <!-- populated by script -->
+                </ul>
+            </div>
         </section>
     </main>
     
