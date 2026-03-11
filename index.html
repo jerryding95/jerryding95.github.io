@@ -166,7 +166,7 @@
       <div id="terminal" class="terminal" aria-live="polite" hidden></div>
     </div>
   </div>
-  <script src="assets/js/bibtexParse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bibtex-parser-js@0.0.2/bibtexParse.min.js"></script>
   <script>
     (function () {
       // Image loading and tagline
@@ -239,11 +239,6 @@
         }
         
         if (key === 'publications') {
-          if (typeof bibtexParse === 'undefined') {
-            console.error('bibtexParse library not loaded');
-            typeLines(['Error loading publications', '> parser missing']);
-            return;
-          }
           // fetch the bibliography file relative to the current document
           var bibPath = './publications.bib';
           console.log('fetching bibliography at', bibPath);
