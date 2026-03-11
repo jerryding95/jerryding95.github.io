@@ -1,0 +1,4 @@
+> about
+
+Hi, I’m Jianru (Jerry) Ding, a systems and distributed computing researcher.
+This site is a simple interactive CV.

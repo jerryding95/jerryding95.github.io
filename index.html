@@ -188,26 +188,10 @@
       var typingToken = 0; // increments to cancel in-flight typing
 
       var contentMap = {
-        about: [
-          '> about',
-          '',
-          'Hi, I’m Jianru (Jerry) Ding, a systems and distributed computing researcher.',
-          'This site is a simple interactive CV.'
-        ],
-        projects: [
-          '> open projects',
-          '',
-          '— LLM-agent serving on heterogeneous GPUs',
-          '— Software-Defined Cooling for datacenters',
-          '— UpDown graph analytics system',
-        ],
-        publications: [
-          '> open publications',
-          '',
-          'Example Paper 1 (2024)',
-          'Example Paper 2 (2023)',
-          'Example Paper 3 (2022)',
-        ],
+        // static fallbacks in case fetch fails
+        about: ['> about', '', 'Hi, I’m Jianru (Jerry) Ding, a systems and distributed computing researcher.', 'This site is a simple interactive CV.'],
+        projects: ['> open projects', '', '— LLM-agent serving on heterogeneous GPUs', '— Software-Defined Cooling for datacenters', '— UpDown graph analytics system'],
+        publications: ['> open publications', '', 'Example Paper 1 (2024)'],
         email: ['Email: jrding95@gmail.com']
       };
 
@@ -253,7 +237,7 @@
         }
         
         if (key === 'publications') {
-          // fetch the bibliography file relative to the current document
+          // fetch bibliography as before
           var bibPath = './publications.bib';
           console.log('fetching bibliography at', bibPath);
           fetch(bibPath)
@@ -297,6 +281,25 @@
               console.error('bib fetch failed', err);
               typeLines(['Error loading publications']);
               typeLines(['> ' + err.message]);
+            });
+          return;
+        }
+        // handle about/projects from separate files
+        if (key === 'about' || key === 'projects') {
+          var filePath = './' + key + '.txt';
+          fetch(filePath)
+            .then(r => {
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return r.text();
+            })
+            .then(text => {
+              var lines = text.split(/\r?\n/);
+              typeLines(lines);
+            })
+            .catch(err => {
+              console.error(key + ' fetch failed', err);
+              // fallback to contentMap
+              typeLines(contentMap[key] || ['']);
             });
           return;
         }
