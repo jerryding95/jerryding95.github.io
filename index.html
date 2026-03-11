@@ -239,8 +239,14 @@
         }
         
         if (key === 'publications') {
-          fetch(window.location.origin + '/publications.bib')
-            .then(r => r.text())
+          // fetch the bibliography file relative to the current document
+          var bibPath = './publications.bib';
+          console.log('fetching bibliography at', bibPath);
+          fetch(bibPath)
+            .then(r => {
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return r.text();
+            })
             .then(text => {
               var parsed = bibtexParse.toJSON(text);
               var lines = ['> open publications', ''];
