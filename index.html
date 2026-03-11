@@ -8,47 +8,37 @@
     <script defer src="assets/js/script.js"></script>
 </head>
 <body>
-    <header class="site-header">
-        <nav>
-            <ul>
-                <li><a href="#intro">Introduction</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-            </ul>
-        </nav>
+        <header class="head">
+        <img src="me.png" alt="photo of Jianru Ding" id="profile-pic" />
+        <h1>Jianru (Jerry) Ding</h1>
+        <p>Computer scientist researching systems and distributed computing.</p>
     </header>
-    
-    <main>
+
+    <div class="wrap">
         <section id="intro">
-            <div class="container">
-                <h1>Welcome</h1>
-                <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>, a researcher in systems and distributed
-                computing. This site is a dynamically interactive presentation of my
-                projects and publications.</p>
-            </div>
+            <h2>About</h2>
+            <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>. This site showcases my
+            projects and publications, all rendered client-side for a fast,
+            interactive experience.</p>
         </section>
-        
+
         <section id="projects">
-            <div class="container">
-                <h2>Projects</h2>
-                <input id="project-search" type="text" placeholder="Search projects...">
-                <ul id="project-list">
-                    <!-- populated by script -->
-                </ul>
-            </div>
+            <h2>Projects</h2>
+            <input id="project-search" type="text" placeholder="Search projects...">
+            <ul id="project-list">
+                <!-- populated by script -->
+            </ul>
         </section>
-        
+
         <section id="publications">
-            <div class="container">
-                <h2>Publications</h2>
-                <input id="pub-search" type="text" placeholder="Filter publications...">
-                <ul id="pub-list">
-                    <!-- populated by script -->
-                </ul>
-            </div>
+            <h2>Publications</h2>
+            <input id="pub-search" type="text" placeholder="Filter publications...">
+            <ul id="pub-list">
+                <!-- populated by script -->
+            </ul>
         </section>
-    </main>
-    
+    </div>
+
     <footer>
         <p>&copy; 2026 Jianru (Jerry) Ding</p>
     </footer>

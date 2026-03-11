@@ -40,25 +40,5 @@ document.addEventListener("DOMContentLoaded", function() {
         populateFromJson('data/publications.json', pubList, 'pub-item');
     }
 
-    /* highlight nav links and transition backgrounds on scroll */
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
 
-    const sectionObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // update body background to match current section
-                const bg = getComputedStyle(entry.target).background;
-                document.body.style.background = bg;
-
-                // update nav link state
-                const id = entry.target.id;
-                navLinks.forEach(a => {
-                    a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-                });
-            }
-        });
-    }, {threshold: 0.6});
-
-    sections.forEach(s => sectionObserver.observe(s));
 });
