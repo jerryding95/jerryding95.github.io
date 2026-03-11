@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Academic Site</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script defer src="assets/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="intro">
+            <h1>Welcome</h1>
+            <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>, a researcher in systems and distributed
+            computing. This site is a dynamically interactive presentation of my
+            projects and publications.</p>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <input id="project-search" type="text" placeholder="Search projects...">
+            <ul id="project-list">
+                <li class="project-item">LLM-agent serving on heterogeneous GPUs</li>
+                <li class="project-item">Software-Defined Cooling for datacenters</li>
+                <li class="project-item">UpDown graph analytics system</li>
+                <li class="project-item">Distributed power management (SC'23)</li>
+                <li class="project-item">Cache allocation performance modeling (ICAC'19)</li>
+            </ul>
+        </section>
+        
+        <section id="publications">
+            <h2>Publications</h2>
+            <input id="pub-search" type="text" placeholder="Filter publications...">
+            <ul id="pub-list">
+                <li class="pub-item">J. Ding et al., "Example Paper 1", 2024.</li>
+                <li class="pub-item">A. Researcher, J. Ding, "Example Paper 2", 2023.</li>
+                <li class="pub-item">J. Ding, "Example Paper 3", 2022.</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Jianru (Jerry) Ding</p>
+    </footer>
+</body>
+</html>
