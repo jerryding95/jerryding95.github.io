@@ -1,52 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Academic Site</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="assets/js/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jianru (Jerry) Ding</title>
+  <meta name="description" content="Jianru (Jerry) Ding — systems and distributed computing researcher." />
+  <link rel="preload" as="image" href="me.png" />
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      color: #111;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .head {
+      text-align: center;
+    }
+
+    .head img {
+      width: 140px;
+      height: 140px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 20px;
+      transition: filter 220ms ease, opacity 220ms ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      background-color: #f5f5f5;
+      background-image: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    }
+
+    .head img.blur {
+      filter: blur(10px);
+      opacity: 0.8;
+    }
+
+    .head img.loaded {
+      filter: none;
+      opacity: 1;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    .tag {
+      margin: 0 0 16px 0;
+      color: #555;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .links a {
+      margin: 0;
+      color: #111;
+      text-decoration: none;
+      transition: all 200ms ease;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.2;
+      font-weight: 400;
+      padding: 4px 0;
+    }
+
+    .links a:hover {
+      color: #333;
+      transform: translateY(-1px);
+    }
+
+    .links a.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .links a:focus-visible {
+      outline: 2px solid #111;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .terminal {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #0f1117;
+      color: #e6e7eb;
+      border: 1px solid #1f2330;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      line-height: 1.45;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    .terminal a {
+      color: #8ab4f8;
+      text-decoration: underline;
+    }
+
+    .terminal a:hover {
+      color: #cde3ff;
+    }
+
+    .terminal[hidden] {
+      display: none;
+    }
+
+    .prompt {
+      color: #6cff6c;
+    }
+  </style>
 </head>
+
 <body>
-        <header class="head">
-        <img src="me.png" alt="photo of Jianru Ding" id="profile-pic" />
-        <h1>Jianru (Jerry) Ding</h1>
-        <p class="areas">Systems • Distributed Computing • AI</p>
-    </header>
-
-    <div class="wrap">
-        <nav class="tabs">
-            <button data-target="intro" class="tab-button active">About</button>
-            <button data-target="projects" class="tab-button">Projects</button>
-            <button data-target="publications" class="tab-button">Publications</button>
-        </nav>
-
-        <section id="intro" class="tab-content active">
-            <h2>About</h2>
-            <p>Hi, I&rsquo;m <strong>Jianru (Jerry) Ding</strong>. This site showcases my
-            projects and publications, all rendered client-side for a fast,
-            interactive experience.</p>
-        </section>
-
-        <section id="projects" class="tab-content">
-            <h2>Projects</h2>
-            <input id="project-search" type="text" placeholder="Search projects...">
-            <ul id="project-list">
-                <!-- populated by script -->
-            </ul>
-        </section>
-
-        <section id="publications" class="tab-content">
-            <h2>Publications</h2>
-            <input id="pub-search" type="text" placeholder="Filter publications...">
-            <ul id="pub-list">
-                <!-- populated by script -->
-            </ul>
-        </section>
+  <div class="wrap">
+    <div class="head">
+      <img src="me.png" alt="Jianru (Jerry) Ding" loading="eager" decoding="async" class="blur" />
+      <h1>Jianru (Jerry) Ding</h1>
+      <p class="tag">Systems &amp; distributed computing researcher</p>
+      <p class="links">
+        <a href="#email" data-target="email">Email</a>
+        <a href="#projects" data-target="projects">Projects</a>
+        <a href="#publications" data-target="publications">Publications</a>
+      </p>
     </div>
+    <div class="body">
+      <div id="terminal" class="terminal" aria-live="polite" hidden></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Image loading and tagline
+      var hero = document.querySelector('.head img');
+      var tagEl = document.querySelector('.tag');
 
-    <footer>
-        <p>&copy; 2026 Jianru (Jerry) Ding</p>
-    </footer>
+      if (hero && hero.complete) hero.classList.add('loaded'), hero.classList.remove('blur');
+      else if (hero) hero.onload = () => (hero.classList.add('loaded'), hero.classList.remove('blur'));
+      if (tagEl) tagEl.innerHTML = 'Systems &amp; distributed computing researcher';
+      var terminal = document.getElementById('terminal');
+      var navLinks = document.querySelectorAll('.links a[data-target]');
+      var allTopLinks = document.querySelectorAll('.links a');
+      var isTyping = false;
+      var typingTimeout = null;
+      var typingToken = 0; // increments to cancel in-flight typing
+
+      var contentMap = {
+        hiring: [
+          '> open hiring',
+          '',
+          'I dislike pushing people. I am looking for:',
+          '- Highly SELF-MOTIVATED students',
+          '- Want to do something fun where I can contribute',
+          '- Open to a brief trial (~3 months) before committing',
+          '',
+          'To start, email three standout achievements and why you fit.'
+        ],
+        projects: [
+          '> open projects',
+          '',
+          '— LLM-agent serving on heterogeneous GPUs',
+          '— Software-Defined Cooling for datacenters',
+          '— UpDown graph analytics system',
+        ],
+        publications: [
+          '> open publications',
+          '',
+          'Example Paper 1 (2024)',
+          'Example Paper 2 (2023)',
+          'Example Paper 3 (2022)',
+        ],
+        email: ['Email: jianru@domain.edu'],
+        students: [
+          '> open students',
+          '',
+          'Currently supervising: none'
+        ],
+        phd: ['> open myPhD', '', 'MyPhD details go here'],
+        media: ['> open media', '', 'No media items yet']
+      };
+
+      function showTerminalContent(key) {
+        var lines = contentMap[key] || [''];
+        terminal.innerHTML = '';
+        terminal.hidden = false;
+        lines.forEach(l => terminal.innerHTML += l + '\n');
+      }
+
+      navLinks.forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          var target = a.getAttribute('data-target');
+          showTerminalContent(target);
+        });
+      });
+
+      // optionally show default
+      showTerminalContent('projects');
+    })();
+  </script>
 </body>
 </html>
