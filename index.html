@@ -210,7 +210,26 @@
         var lines = contentMap[key] || [''];
         terminal.innerHTML = '';
         terminal.hidden = false;
-        lines.forEach(l => terminal.innerHTML += l + '\n');
+        // typewriter effect
+        var lineIndex = 0;
+        function typeLine(line, pos, done) {
+          if (pos < line.length) {
+            terminal.innerHTML += line.charAt(pos);
+            setTimeout(() => typeLine(line, pos + 1, done), 30);
+          } else {
+            terminal.innerHTML += '\n';
+            done();
+          }
+        }
+        function typeNext() {
+          if (lineIndex < lines.length) {
+            typeLine(lines[lineIndex], 0, () => {
+              lineIndex++;
+              typeNext();
+            });
+          }
+        }
+        typeNext();
       }
 
       navLinks.forEach(a => {
