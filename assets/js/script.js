@@ -15,11 +15,28 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // fetch JSON data and populate lists
+    function populateFromJson(url, listElem, itemClass) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(entry => {
+                    const li = document.createElement("li");
+                    li.className = itemClass;
+                    li.textContent = entry.title;
+                    listElem.appendChild(li);
+                });
+                filterList(projectSearch, projectList, "project-item");
+                filterList(pubSearch, pubList, "pub-item");
+            })
+            .catch(err => console.error("Error loading JSON:", err));
+    }
+
     if (projectSearch && projectList) {
-        filterList(projectSearch, projectList, "project-item");
+        populateFromJson('data/projects.json', projectList, 'project-item');
     }
 
     if (pubSearch && pubList) {
-        filterList(pubSearch, pubList, "pub-item");
+        populateFromJson('data/publications.json', pubList, 'pub-item');
     }
 });
